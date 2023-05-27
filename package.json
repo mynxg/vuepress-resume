@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "dev": "SET NODE_OPTIONS=--openssl-legacy-provider && vuepress dev resume",
-    "build": "SET NODE_OPTIONS=--openssl-legacy-provider && vuepress build resume"
+    "build": "vuepress build resume"
   },
   "author": "Sirice <sirice@163.com>",
   "license": "MIT",
