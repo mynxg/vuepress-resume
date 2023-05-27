@@ -1,0 +1,49 @@
+name: vuepress-theme-resume 部署文档
+
+on:
+  push:
+    branches:
+      - main
+jobs:
+  deploy-gh-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+      # 拉取 github 仓库代码
+        uses: actions/checkout@v3
+        with:
+         # “最近更新时间” 等 git 日志相关信息，需要拉取全部提交记录
+          fetch-depth: 0
+          # 如果你文档需要 Git 子模块，取消注释下一行
+          # submodules: true
+
+      # 设定 node 环境
+      - name: 设置 Node.js
+        uses: actions/setup-node@v3
+        with:
+         # 选择要使用的 node 版本
+          # node-version: ${{ matrix.node-version }}
+          node-version: 18
+          # 设置发包 npm 地址仓库
+          registry-url: https://registry.npmjs.org
+          # 缓存 npm 依赖
+          cache: npm
+      # 安装依赖，相当于 npm ci
+      - name: Install dependencies 📦️
+        run: npm install
+        
+      # 执行构建步骤
+      # 运行构建脚本
+      - name: 构建文档
+        env:
+          NODE_OPTIONS: --max_old_space_size=8192
+        run: |-
+          npm run build
+          
+      - name: web deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.ACCESS_TOKEN }}
+          publish_branch: gh_pages
+          publish_dir: ./dist
+          commit_message: auto deploy
