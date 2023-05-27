@@ -23,7 +23,7 @@ jobs:
         with:
          # 选择要使用的 node 版本
           # node-version: ${{ matrix.node-version }}
-          node-version: 18
+          node-version: 16
           # 设置发包 npm 地址仓库
           registry-url: https://registry.npmjs.org
           # 缓存 npm 依赖
