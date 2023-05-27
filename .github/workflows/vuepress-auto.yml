@@ -3,7 +3,7 @@ name: vuepress-theme-resume 部署文档
 on:
   push:
     branches:
-      - main
+      - master
 jobs:
   deploy-gh-pages:
     runs-on: ubuntu-latest
