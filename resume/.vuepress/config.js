@@ -1,5 +1,5 @@
 module.exports = {
-    title: 'LiuZijian\'s Resume',
+    title: 'nxg\'s Resume',
     base: '/vuepress-resume/',
     themeConfig: {
         navbar: false,

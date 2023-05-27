@@ -45,5 +45,5 @@ jobs:
         with:
           github_token: ${{ secrets.ACCESS_TOKEN }}
           publish_branch: gh_pages
-          publish_dir: resume/.vuepress/dist
+          publish_dir: ./resume/.vuepress/dist
           commit_message: auto deploy
